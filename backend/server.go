@@ -1,6 +1,6 @@
 package main
 
-import "library-sample-be/services"
+import "library-sample-be/database"
 
 func main() {
 	database.InitDb()

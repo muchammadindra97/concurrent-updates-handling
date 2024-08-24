@@ -10,13 +10,13 @@ import (
 var dbConnection *sql.DB
 
 func InitDb() {
-	_, err := os.OpenFile("./database.sqlite", os.O_RDONLY|os.O_CREATE, 0644)
+	_, err := os.OpenFile("./database/database.sqlite", os.O_RDONLY|os.O_CREATE, 0644)
 
 	if err != nil {
 		panic("Can't create database!")
 	}
 
-	db, err := sql.Open("sqlite", "./database.sqlite")
+	db, err := sql.Open("sqlite", "./database/database.sqlite")
 	if err != nil {
 		panic("Can't open database!")
 	}
