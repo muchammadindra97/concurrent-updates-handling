@@ -85,3 +85,7 @@ func UtilCheckEtag(etag string, resourceIdentifier string) (bool, error) {
 
 	return hashedResource == etag, nil
 }
+
+func UtilEnableCors(w http.ResponseWriter) {
+    w.Header().Set("Access-Control-Allow-Origin", "*")
+}

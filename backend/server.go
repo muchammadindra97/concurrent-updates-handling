@@ -10,7 +10,8 @@ import (
 func main() {
 	database.InitDb()
 
-	http.HandleFunc("/book", func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/books", func(w http.ResponseWriter, r *http.Request) {
+	    handler.UtilEnableCors(w)
 		if r.Method == "POST" {
 			handler.BookCreate(w, r)
 			return
@@ -21,7 +22,8 @@ func main() {
 
 		handler.UtilSendResponseErrorNotFound(w)
 	})
-	http.HandleFunc("/book/{id}", func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/books/{id}", func(w http.ResponseWriter, r *http.Request) {
+	    handler.UtilEnableCors(w)
 		if r.Method == "GET" {
 			handler.BookGetById(w, r)
 			return
