@@ -10,12 +10,6 @@ import (
 func main() {
 	database.InitDb()
 
-	http.HandleFunc("*", func(w http.ResponseWriter, r *http.Request) {
-		if r.Method == "OPTIONS" {
-			w.WriteHeader(http.StatusOK)
-			return
-		}
-	})
 	http.HandleFunc("/books", func(w http.ResponseWriter, r *http.Request) {
 	    handler.UtilEnableCors(w)
 		if r.Method == "POST" {
@@ -24,7 +18,10 @@ func main() {
 		} else if r.Method == "GET" {
 			handler.BookGetAll(w, r)
 			return
-		}
+		} else if r.Method == "OPTIONS" {
+            w.WriteHeader(http.StatusOK)
+            return
+        }
 
 		handler.UtilSendResponseErrorNotFound(w)
 	})
@@ -39,7 +36,10 @@ func main() {
 		} else if r.Method == "DELETE" {
 			handler.BookDeleteById(w, r)
 			return
-		}
+		} else if r.Method == "OPTIONS" {
+            w.WriteHeader(http.StatusOK)
+            return
+        }
 
 		handler.UtilSendResponseErrorNotFound(w)
 	})
