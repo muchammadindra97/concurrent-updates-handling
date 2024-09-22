@@ -10,6 +10,12 @@ import (
 func main() {
 	database.InitDb()
 
+	http.HandleFunc("*", func(w http.ResponseWriter, r *http.Request) {
+		if r.Method == "OPTIONS" {
+			w.WriteHeader(http.StatusOK)
+			return
+		}
+	})
 	http.HandleFunc("/books", func(w http.ResponseWriter, r *http.Request) {
 	    handler.UtilEnableCors(w)
 		if r.Method == "POST" {
