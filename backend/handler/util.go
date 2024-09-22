@@ -55,7 +55,7 @@ func UtilSendResponseClientPreconditionFailed(w http.ResponseWriter) {
 	w.WriteHeader(http.StatusPreconditionFailed)
 	json.NewEncoder(w).Encode(UtilBaseResponse{
 		Status:  false,
-		Message: "Resource could be changed",
+		Message: "Resource could be changed (etag not same)",
 	})
 }
 
