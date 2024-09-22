@@ -19,3 +19,14 @@ This approach might has limitaion if modification date has weak precision (preci
 2. Send the hashed string on "Etag" header to client.
 3. Then client will include the hash value to the request on "If-Match" header.
 4. Server executes update only when "If-Match" value is same as the previously computed unique representation of the resource.
+
+## Example App
+App to run concurrent update simulation is available made with Go (as backend) and ReactJS (as frontend).
+### Backend
+1. Require Go v1.22
+2. Run `go run server.go`
+3. App run on `localhost:9000`
+### Frontend
+1. Require NodeJS v18
+2. Run `npm run dev`
+3. App run on `localhost:5173`
